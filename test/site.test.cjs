@@ -4,7 +4,7 @@ test('all public copy exists in seven languages; site keeps contact/privacy and 
  const messages=JSON.parse(js.match(/const messages=({[\s\S]*?});\nfunction apply/)[1]);
  const used=[...html.matchAll(/data-i18n="([^"]+)"/g)].map(m=>m[1]);
  for(const lang of ['fr','en','de','es','it','pt','ar'])for(const key of used)assert.ok(messages[lang][key],lang+': '+key);
- assert.doesNotMatch(html,/<table\b|demo=1|test\/test|INV-04|PO-04/);
+ assert.doesNotMatch(html,/<table\b|demo=1|test\/test|INV-04|PO-04|[↗↘]|class="workflow"|tracking-title/);
  assert.match(html,/mailto:contact@pingbuyer.com/);assert.match(html,/hits\.sh/);assert.match(html,/id="privacy"/);
  assert.equal([...html.matchAll(/<main>/g)].length,1);assert.equal([...html.matchAll(/<\/main>/g)].length,1);
  for(const lang of Object.keys(messages)){
